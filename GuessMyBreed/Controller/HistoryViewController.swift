@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class HistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class HistoryViewController: UITableViewController {
 
     var breeds: [String]! {
         let object = UIApplication.shared.delegate
@@ -31,9 +31,23 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         print("History dataController")
         let tabBar = self.tabBarController as! TabBarViewController
         dataController = tabBar.dataController
-        
+//        self.tabBarController?.delegate = self as? UITabBarControllerDelegate
         overrideUserInterfaceStyle = .light
         setUpFetchedResultsController()
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//
+//    }
+    
+    func deleteHistory(at index: IndexPath) {
+        let dogToDelete = fetchedResultsController.object(at: index)
+        dataController.viewContext.delete(dogToDelete)
+        try? dataController.viewContext.save()
     }
     
     // MARK: - Table view data source
@@ -48,6 +62,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         return fetchedResultsController.sections?[0].numberOfObjects ?? 0
     }
 
+//    override func tableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyReuseIdentifier", for: indexPath) as! HistoryTableViewCell
@@ -70,6 +85,14 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            deleteHistory(at: indexPath)
+        default:
+            () //Unsupported
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -130,3 +153,28 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
     }
 }
 
+extension HistoryViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+            break
+        case .update:
+            tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+            break
+        default:
+            () // Unsupported
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+}
