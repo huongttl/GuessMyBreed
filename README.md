@@ -20,7 +20,5 @@ is a native iOS game which is created for the final project of [Udacity iOS Deve
 - Run!
 ## API
 We are using an incredible super kawaii Dog photos and breed info provided by [dog.ceo](https://dog.ceo/dog-api/).
-## Screenshots
-
 ## License
 [MIT License](LICENSE.txt)
