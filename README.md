@@ -1,4 +1,4 @@
-# Guess my breed
+# Guess My Breed
 is a native iOS game which is created for the final project of [Udacity iOS Developer Nanodegree](https://www.udacity.com/course/ios-developer-nanodegree--nd003) course: **_You Decide!_**
 ## Overview
 **_Guess my breed_** lets us to guess and gain knowledge about our dog friends' breed.
