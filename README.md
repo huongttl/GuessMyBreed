@@ -5,7 +5,7 @@ is a native iOS game which is created for the final project of [Udacity iOS Deve
 ## Feature
 - Welcome screen with random dog every time
 - Quiz guessing dog breed with 4 options
-- Can check play history on the seccond tab
+- Can check/delete play history on the seccond tab
 ## Technical used
 - CoreData to save played dog's photo, breed info and played time
 - Autolayout to create screens
