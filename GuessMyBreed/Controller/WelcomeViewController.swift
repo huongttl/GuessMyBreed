@@ -9,8 +9,9 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var playButton: UIButton!
     
     var breeds: [String]! {
         let object = UIApplication.shared.delegate
@@ -22,23 +23,35 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
+        
+        indicator.startAnimating()
         navigationController?.navigationBar.isHidden = true
         overrideUserInterfaceStyle = .light
         
         Client.requestAnyRandomImage(completionHandler: handleRandomImageResponse(imageData:error:))
+        
         getBreedList()
     }
     
     func handleImageFileResonse(image: UIImage?, error: Error?) {
-        DispatchQueue.main.async {
-            self.imageView.image = image
+        if let image = image {
+            DispatchQueue.main.async {
+                self.imageView.image = image
+                self.indicator.stopAnimating()
+                self.playButton.isHidden = false
+            }
+        } else {
+            showLoadFailure(message: error?.localizedDescription ?? "")
         }
+        
     }
     
     func handleRandomImageResponse(imageData: DogResponse?, error: Error?) {
         guard let url = URL(string: imageData?.message ?? "") else {
-                print("cannot create URL")
+            showLoadFailure(message: error?.localizedDescription ?? "")
+            print("cannot create URL")
                 return
         }
         Client.requestImageFile(url: url, completionHandler: self.handleImageFileResonse(image:error:))
@@ -67,10 +80,18 @@ class WelcomeViewController: UIViewController {
 //            let appDelegate = object as! AppDelegate
 //            appDelegate.memes.append(meme)
            } else {
-               print("cannot get the breed list")
+                showLoadFailure(message: error?.localizedDescription ?? "")
+                print("cannot get the breed list")
            }
            
        }
+    
+    func showLoadFailure(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        print(message)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
 //    func handleBreedsListResponse(breedsListData: [String]?, error: Error?) {
 //        if let breedsListData = breedsListData {
 //            self.breeds = breedsListData

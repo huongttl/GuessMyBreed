@@ -19,6 +19,7 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var answerView: UIView!
     @IBOutlet weak var answerButton: UIButton!
     @IBOutlet weak var optionStackView: UIStackView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     
     var breed = ""
@@ -58,6 +59,9 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     func generateQuiz() {
+        optionStackView.isHidden = true
+        imageView.isHidden = true
+        indicator.startAnimating()
         answerPos = Int.random(in: 0...3)
         options = [-1, -1, -1, -1]
         for i in 0...3 {
@@ -67,13 +71,19 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
             }
             options[i] = randomX
         }
+//        optionStackView.isHidden = true
+        
+//        optionStackView.isHidden = false
+        getDogWithBreed(breed: breeds[options[answerPos]])
+        
+    }
+    
+    func setupOptions() {
         option1Button.setTitle(breeds[options[0]].localizedCapitalized, for: .normal)
         option2Button.setTitle(breeds[options[1]].localizedCapitalized, for: .normal)
         option3Button.setTitle(breeds[options[2]].localizedCapitalized, for: .normal)
         option4Button.setTitle(breeds[options[3]].localizedCapitalized, for: .normal)
-        getDogWithBreed(breed: breeds[options[answerPos]])
-        
-        
+        optionStackView.isHidden = false
     }
     
     func getDogWithBreed(breed: String) {
@@ -82,18 +92,28 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     func handleRandomImageResponse(imageData: DogResponse?, error: Error?) {
         guard let url = URL(string: imageData?.message ?? "") else {
-                print("cannot create URL")
-                return
+            showLoadFailure(message: error?.localizedDescription ?? "")
+            print("cannot create URL")
+            return
         }
         Client.requestImageFile(url: url, completionHandler: self.handleImageFileResonse(image:error:))
     }
     
     func handleImageFileResonse(image: UIImage?, error: Error?) {
         DispatchQueue.main.async {
+            self.imageView.isHidden = false
             self.imageView.image = image
+            self.indicator.stopAnimating()
+            self.setupOptions()
         }
     }
     
+    func showLoadFailure(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        print(message)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
 //    func getBreedList() {
 //        Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
 //    }
@@ -124,16 +144,16 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         optionStackView.isHidden = true
         answerButton.isHidden = false
         if answerPos == tappedButtonPostition {
-            answerButton.setTitle("Yes! I'm \(breeds[options[answerPos]])", for: .normal)
+            answerButton.setTitle("YES! I'm \(breeds[options[answerPos]].localizedCapitalized) ⋃ ╹ᗊ╹ ⋃", for: .normal)
         } else {
-            answerButton.setTitle("Opps, I'm \(breeds[options[answerPos]])", for: .normal)
+            answerButton.setTitle("OOPS, I'm \(breeds[options[answerPos]].localizedCapitalized) ໒( ̿･ ᴥ ̿･ )ʋ", for: .normal)
         }
-        print("answer: \(answerPos)")
-        print("tapped: \(tappedButtonPostition)")
-        print(options)
-        for i in 0...3 {
-            print(breeds[options[i]])
-        }
+//        print("answer: \(answerPos)")
+//        print("tapped: \(tappedButtonPostition)")
+//        print(options)
+//        for i in 0...3 {
+//            print(breeds[options[i]])
+//        }
         
     }
     
@@ -176,9 +196,9 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         saveAnswer()
     }
     @IBAction func resetButtonTapped(_ sender: Any) {
-        optionStackView.isHidden = false
         answerButton.isHidden = true
         generateQuiz()
+//        optionStackView.isHidden = false
     }
     
 }
