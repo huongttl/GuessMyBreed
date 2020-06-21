@@ -35,9 +35,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     var fetchedResultsController: NSFetchedResultsController<Dog>!
     var dataController: DataController!
-//    let rightAnswerMessage = "Well done, buddy!"
-//    let wrongAnswerMessage = "Opps, I'm !"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +44,11 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
         let tabBar = self.tabBarController as! TabBarViewController
         dataController = tabBar.dataController
-        
-//        getBreedList()
+
         generateQuiz()
         if dataController == nil {
             print("dataController is NIL")
         }
-//        dataController = tabBarController.data
-//        dataController = 
         setUpFetchedResultsController()
     }
     
@@ -71,9 +65,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
             }
             options[i] = randomX
         }
-//        optionStackView.isHidden = true
-        
-//        optionStackView.isHidden = false
         getDogWithBreed(breed: breeds[options[answerPos]])
         
     }
@@ -114,22 +105,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
-//    func getBreedList() {
-//        Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
-//    }
-//
-//    func handleBreedsListResponse(breedsListData: [String]?, error: Error?) {
-//           if let breedsListData = breedsListData {
-//               breeds = breedsListData
-//                print(breeds)
-////               DispatchQueue.main.async {
-////                   self.pickerView.reloadAllComponents()
-////               }
-//           } else {
-//               print("cannot get the breed list")
-//           }
-//
-//       }
     
     /*
     // MARK: - Navigation
@@ -148,12 +123,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         } else {
             answerButton.setTitle("OOPS, I'm \(breeds[options[answerPos]].localizedCapitalized) ໒( ̿･ ᴥ ̿･ )ʋ", for: .normal)
         }
-//        print("answer: \(answerPos)")
-//        print("tapped: \(tappedButtonPostition)")
-//        print(options)
-//        for i in 0...3 {
-//            print(breeds[options[i]])
-//        }
         
     }
     
@@ -198,7 +167,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBAction func resetButtonTapped(_ sender: Any) {
         answerButton.isHidden = true
         generateQuiz()
-//        optionStackView.isHidden = false
     }
     
 }

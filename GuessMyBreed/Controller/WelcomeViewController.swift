@@ -68,17 +68,6 @@ class WelcomeViewController: UIViewController {
                 let appDelegate = object as! AppDelegate
                 appDelegate.breeds = breedsListData
             }
-            
-//               breeds = breedsListData
-//                print(breeds)
-//               DispatchQueue.main.async {
-//                   self.pickerView.reloadAllComponents()
-//               }
-            
-//            let meme = Meme(topText: topText.text!, bottomText: bottomText.text!, originalImage: imageView.image!, memedImage: memedImage)
-//            let object = UIApplication.shared.delegate
-//            let appDelegate = object as! AppDelegate
-//            appDelegate.memes.append(meme)
            } else {
                 showLoadFailure(message: error?.localizedDescription ?? "")
                 print("cannot get the breed list")
@@ -92,30 +81,11 @@ class WelcomeViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
-//    func handleBreedsListResponse(breedsListData: [String]?, error: Error?) {
-//        if let breedsListData = breedsListData {
-//            self.breeds = breedsListData
-//            DispatchQueue.main.async {
-////                self.pickerView.reloadAllComponents()
-//            }
-//        } else {
-//            print("cannot get the breed list")
-//        }
-//    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let controller = segue.destination as! QuizViewController
-//        controller.breeds = breeds
-//    }
+
     @IBAction func nextButtonTapped(_ sender: Any) {
-//        let controller : QuizViewController
-//        let controller = storyboard?.instantiateViewController(identifier: "QuizViewController") as! QuizViewController
         let controller = storyboard?.instantiateViewController(identifier: "TabBarViewController") as! TabBarViewController
         controller.dataController = dataController
         navigationController?.pushViewController(controller, animated: true)
-//        controller.breeds = breeds
-//        showDetailViewController(controller, sender: self)
-//        performSegue(withIdentifier: "QuizViewController", sender: self)
         
     }
 }

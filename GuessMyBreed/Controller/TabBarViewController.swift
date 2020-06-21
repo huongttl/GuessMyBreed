@@ -9,19 +9,11 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-//    var breeds: [String]! {
-//        let object = UIApplication.shared.delegate
-//        let delegate = object as! AppDelegate
-//        return delegate.breeds
-//    }
     var dataController: DataController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("print")
-//        print(tabBarController?.viewControllers)
-        print(dataController)
     }
     
 
@@ -34,6 +26,4 @@ class TabBarViewController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
 */
-    
-
 }
