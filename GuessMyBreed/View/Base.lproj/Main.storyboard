@@ -106,8 +106,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6Sw-l8-4oa" userLabel="ScreenStackView">
-                                <rect key="frame" x="0.0" y="64" width="414" height="704.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="6Sw-l8-4oa" userLabel="ScreenStackView">
+                                <rect key="frame" x="0.0" y="59" width="414" height="662.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is my breed?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POQ-tt-mSG">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="21.5"/>
@@ -116,16 +116,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOU-pg-Ugj">
-                                        <rect key="frame" x="0.0" y="41.5" width="414" height="414"/>
+                                        <rect key="frame" x="0.0" y="33.5" width="414" height="414"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="BOU-pg-Ugj" secondAttribute="height" multiplier="1:1" id="0WK-iy-6fV" userLabel="aspect = 1:1"/>
                                         </constraints>
                                     </imageView>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="n1e-b1-DEq">
-                                        <rect key="frame" x="0.0" y="475.5" width="414" height="37"/>
+                                        <rect key="frame" x="0.0" y="459.5" width="414" height="37"/>
                                     </activityIndicatorView>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-21-9hB" userLabel="OptionStackView">
-                                        <rect key="frame" x="0.0" y="532.5" width="414" height="172"/>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-21-9hB" userLabel="OptionStackView">
+                                        <rect key="frame" x="0.0" y="508.5" width="414" height="154"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uP-02-ArU">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -139,7 +139,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgc-Xr-LR6">
-                                                <rect key="frame" x="0.0" y="63" width="414" height="23"/>
+                                                <rect key="frame" x="0.0" y="57" width="414" height="23"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
                                                 <state key="normal" title="Option2">
@@ -150,7 +150,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNW-jQ-idv">
-                                                <rect key="frame" x="0.0" y="106" width="414" height="23"/>
+                                                <rect key="frame" x="0.0" y="94" width="414" height="23"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
                                                 <state key="normal" title="Option3">
@@ -161,7 +161,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaj-Hi-NVW">
-                                                <rect key="frame" x="0.0" y="149" width="414" height="23"/>
+                                                <rect key="frame" x="0.0" y="131" width="414" height="23"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
                                                 <state key="normal" title="Option4">
@@ -174,7 +174,7 @@
                                         </subviews>
                                     </stackView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4n-1b-Cga">
-                                        <rect key="frame" x="0.0" y="704.5" width="414" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="662.5" width="414" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                         <state key="normal" title="Answer Button">
@@ -193,7 +193,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Sw-l8-4oa" firstAttribute="top" secondItem="gDX-Dg-fl1" secondAttribute="top" constant="20" id="0rG-u3-a0w"/>
+                            <constraint firstItem="6Sw-l8-4oa" firstAttribute="top" secondItem="gDX-Dg-fl1" secondAttribute="top" constant="15" id="0rG-u3-a0w"/>
                             <constraint firstItem="6Sw-l8-4oa" firstAttribute="leading" secondItem="gDX-Dg-fl1" secondAttribute="leading" id="SU6-uE-O93"/>
                             <constraint firstItem="gDX-Dg-fl1" firstAttribute="trailing" secondItem="6Sw-l8-4oa" secondAttribute="trailing" id="bo1-Vj-IwV"/>
                         </constraints>
