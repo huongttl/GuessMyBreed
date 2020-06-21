@@ -51,7 +51,6 @@ class Client {
             }
             let decoder = JSONDecoder()
             let imageData = try! decoder.decode(DogResponse.self, from: data)
-            print(imageData)
             completionHandler(imageData, nil)
         }
         imageURLTask.resume()
@@ -66,7 +65,6 @@ class Client {
             }
             let decoder = JSONDecoder()
             let imageData = try! decoder.decode(DogResponse.self, from: data)
-            print(imageData)
             completionHandler(imageData, nil)
         }
         imageURLTask.resume()
