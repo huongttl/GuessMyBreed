@@ -119,9 +119,9 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         optionStackView.isHidden = true
         answerButton.isHidden = false
         if answerPos == tappedButtonPostition {
-            answerButton.setTitle("YES! I'm \(breeds[options[answerPos]].localizedCapitalized) ⋃ ╹ᗊ╹ ⋃", for: .normal)
+            answerButton.setTitle("YES! I'm \(breeds[options[answerPos]].localizedUppercase) ⋃ ╹ᗊ╹ ⋃\n\n    Tap to next quiz ~", for: .normal)
         } else {
-            answerButton.setTitle("OOPS, I'm \(breeds[options[answerPos]].localizedCapitalized) ໒( ̿･ ᴥ ̿･ )ʋ", for: .normal)
+            answerButton.setTitle("OOPS, I'm \(breeds[options[answerPos]].localizedUppercase) ໒( ̿･ ᴥ ̿･ )ʋ\n\n    Tap to next quiz ~", for: .normal)
         }
         
     }
