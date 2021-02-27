@@ -20,8 +20,6 @@ is a native iOS game which is created for the final project of [Udacity iOS Deve
 - Run!
 ## API
 We are using an incredible super kawaii Dog photos and breed info provided by [dog.ceo](https://dog.ceo/dog-api/).
-## App icon
-[Dog icon](https://icons8.com/icons/set/dog--v3) icon by [Icons8](https://icons8.com).
 Thank you for your work!
 ## License
 [MIT License](LICENSE.txt)
