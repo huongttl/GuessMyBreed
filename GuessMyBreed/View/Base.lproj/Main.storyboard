@@ -121,11 +121,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="n1e-b1-DEq">
-                                        <rect key="frame" x="0.0" y="39" width="768" height="0.0"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="n1e-b1-DEq">
+                                        <rect key="frame" x="0.0" y="37" width="768" height="37"/>
                                     </activityIndicatorView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOU-pg-Ugj">
-                                        <rect key="frame" x="0.0" y="37" width="768" height="690"/>
+                                        <rect key="frame" x="0.0" y="86" width="768" height="641"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="bottom" axis="vertical" distribution="equalSpacing" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-21-9hB" userLabel="OptionStackView">
                                         <rect key="frame" x="0.0" y="739" width="768" height="200"/>

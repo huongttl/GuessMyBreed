@@ -50,8 +50,7 @@ class WelcomeViewController: UIViewController {
             }
         } else {
             showLoadFailure(message: error?.localizedDescription ?? "")
-        }
-        
+        }    
     }
     
     func handleRandomImageResponse(imageData: DogResponse?, error: Error?) {
