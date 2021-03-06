@@ -12,6 +12,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var introLabel: UILabel!
     
     var breeds: [String]! {
         let object = UIApplication.shared.delegate
@@ -47,6 +48,7 @@ class WelcomeViewController: UIViewController {
                 }
                 self.indicator.stopAnimating()
                 self.playButton.isHidden = false
+                self.introLabel.isHidden = false
             }
         } else {
             showLoadFailure(message: error?.localizedDescription ?? "")
