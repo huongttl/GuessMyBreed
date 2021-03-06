@@ -38,7 +38,13 @@ class WelcomeViewController: UIViewController {
     func handleImageFileResonse(image: UIImage?, error: Error?) {
         if let image = image {
             DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let screenWidth = screenSize.width
+                let imageWidth = image.size.width
                 self.imageView.image = image
+                if(imageWidth>screenWidth) {
+                    self.imageView.contentMode = .scaleAspectFit
+                }
                 self.indicator.stopAnimating()
                 self.playButton.isHidden = false
             }

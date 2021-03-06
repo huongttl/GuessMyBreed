@@ -93,7 +93,13 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     func handleImageFileResonse(image: UIImage?, error: Error?) {
         DispatchQueue.main.async {
             self.imageView.isHidden = false
+            let screenSize: CGRect = UIScreen.main.bounds
+            let screenWidth = screenSize.width
+            let imageWidth = image?.size.width
             self.imageView.image = image
+            if(imageWidth ?? screenWidth>screenWidth) {
+                self.imageView.contentMode = .scaleAspectFit
+            }
             self.indicator.stopAnimating()
             self.setupOptions()
         }
