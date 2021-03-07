@@ -21,7 +21,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBOutlet weak var optionStackView: UIStackView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
-    
     var breed = ""
     var breeds: [String]! {
         let object = UIApplication.shared.delegate
@@ -53,9 +52,6 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     func generateQuiz() {
-        optionStackView.isHidden = true
-        imageView.isHidden = true
-        indicator.startAnimating()
         answerPos = Int.random(in: 0...3)
         options = [-1, -1, -1, -1]
         for i in 0...3 {
@@ -69,12 +65,22 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
     }
     
+    func hideQuizContent() {
+        optionStackView.isHidden = true
+        option1Button.isHidden = true
+        option2Button.isHidden = true
+        option3Button.isHidden = true
+        option4Button.isHidden = true
+
+        imageView.isHidden = true
+        indicator.startAnimating()
+    }
+    
     func setupOptions() {
         option1Button.setTitle(breeds[options[0]].localizedCapitalized, for: .normal)
         option2Button.setTitle(breeds[options[1]].localizedCapitalized, for: .normal)
         option3Button.setTitle(breeds[options[2]].localizedCapitalized, for: .normal)
         option4Button.setTitle(breeds[options[3]].localizedCapitalized, for: .normal)
-        optionStackView.isHidden = false
     }
     
     func getDogWithBreed(breed: String) {
@@ -92,17 +98,28 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     func handleImageFileResonse(image: UIImage?, error: Error?) {
         DispatchQueue.main.async {
-            self.imageView.isHidden = false
             let screenSize: CGRect = UIScreen.main.bounds
             let screenWidth = screenSize.width
             let imageWidth = image?.size.width
-            self.imageView.image = image
+            
             if(imageWidth ?? screenWidth>screenWidth) {
                 self.imageView.contentMode = .scaleAspectFit
             }
-            self.indicator.stopAnimating()
-            self.setupOptions()
+            self.imageView.image = image
+            self.showQuizContent()
         }
+    }
+    
+    func showQuizContent() {
+        self.imageView.isHidden = false
+        self.answerButton.isHidden = true
+        self.indicator.stopAnimating()
+        self.setupOptions()
+        option1Button.isHidden = false
+        option2Button.isHidden = false
+        option3Button.isHidden = false
+        option4Button.isHidden = false
+        optionStackView.isHidden = false
     }
     
     func showLoadFailure(message: String) {
@@ -123,6 +140,11 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     */
     func showAnswer(tappedButtonPostition: Int) {
         optionStackView.isHidden = true
+        option1Button.setTitle("", for: .normal)
+        option2Button.setTitle("", for: .normal)
+        option3Button.setTitle("", for: .normal)
+        option4Button.setTitle("", for: .normal)
+        
         answerButton.isHidden = false
         if answerPos == tappedButtonPostition {
             answerButton.setTitle("YES! I'm \(breeds[options[answerPos]].localizedUppercase) ⋃ ╹ᗊ╹ ⋃\n\n    Tap to next quiz ~", for: .normal)
@@ -157,22 +179,26 @@ class QuizViewController: UIViewController, NSFetchedResultsControllerDelegate {
     @IBAction func option1ButtonTapped(_ sender: Any) {
         showAnswer(tappedButtonPostition: 0)
         saveAnswer()
+        generateQuiz()
     }
     @IBAction func option2ButtonTapped(_ sender: Any) {
         showAnswer(tappedButtonPostition: 1)
         saveAnswer()
+        generateQuiz()
     }
     @IBAction func option3ButtonTapped(_ sender: Any) {
         showAnswer(tappedButtonPostition: 2)
         saveAnswer()
+        generateQuiz()
     }
     @IBAction func option4ButtonTapped(_ sender: Any) {
         showAnswer(tappedButtonPostition: 3)
         saveAnswer()
+        generateQuiz()
     }
     @IBAction func resetButtonTapped(_ sender: Any) {
+        hideQuizContent()
         answerButton.isHidden = true
-        generateQuiz()
     }
     
 }

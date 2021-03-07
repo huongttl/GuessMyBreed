@@ -131,11 +131,11 @@
                                     <stackView opaque="NO" contentMode="bottom" axis="vertical" distribution="equalSpacing" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-21-9hB" userLabel="OptionStackView">
                                         <rect key="frame" x="0.0" y="739" width="768" height="200"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uP-02-ArU">
-                                                <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uP-02-ArU">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="20" maxX="50" maxY="0.0"/>
-                                                <state key="normal" title="Option1">
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                 </state>
@@ -143,11 +143,11 @@
                                                     <action selector="option1ButtonTapped:" destination="Cai-Gr-kBh" eventType="touchUpInside" id="40R-mn-BN0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgc-Xr-LR6">
-                                                <rect key="frame" x="0.0" y="72.5" width="768" height="23"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lgc-Xr-LR6">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
-                                                <state key="normal" title="Option2">
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                 </state>
@@ -155,11 +155,11 @@
                                                     <action selector="option2ButtonTapped:" destination="Cai-Gr-kBh" eventType="touchUpInside" id="of2-L4-Nbv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNW-jQ-idv">
-                                                <rect key="frame" x="0.0" y="124.5" width="768" height="23"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNW-jQ-idv">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
-                                                <state key="normal" title="Option3">
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                 </state>
@@ -167,11 +167,11 @@
                                                     <action selector="option3ButtonTapped:" destination="Cai-Gr-kBh" eventType="touchUpInside" id="bZR-Ps-fAp"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaj-Hi-NVW">
-                                                <rect key="frame" x="0.0" y="177" width="768" height="23"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaj-Hi-NVW">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="50" maxY="0.0"/>
-                                                <state key="normal" title="Option4">
+                                                <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                 </state>
@@ -192,9 +192,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
-                                        <state key="normal">
-                                            <string key="title">Answer Button
-Next play</string>
+                                        <state key="normal" title="Play!">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
