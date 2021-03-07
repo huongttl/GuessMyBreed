@@ -59,7 +59,7 @@ class WelcomeViewController: UIViewController {
         guard let url = URL(string: imageData?.message ?? "") else {
             showLoadFailure(message: error?.localizedDescription ?? "")
             print("cannot create URL")
-                return
+            return
         }
         Client.requestImageFile(url: url, completionHandler: self.handleImageFileResonse(image:error:))
     }

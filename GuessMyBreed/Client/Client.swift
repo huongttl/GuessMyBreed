@@ -33,7 +33,10 @@ class Client {
     class func requestImageFile(url: URL, completionHandler: @escaping (UIImage?, Error?) -> Void) {
         let imageDownloadTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
-                completionHandler(nil, error)
+                DispatchQueue.main.async {
+                    completionHandler(nil, error)
+                }
+                
                     return
             }
             let downloadedImage = UIImage(data: data)
@@ -46,7 +49,10 @@ class Client {
         let randomImageEndpoint = Client.Endpoint.randomImageForBreed(breed).url
         let imageURLTask = URLSession.shared.dataTask(with: randomImageEndpoint) { (data, response, error) in
             guard let data = data else {
-                completionHandler(nil, error)
+                DispatchQueue.main.async {
+                    completionHandler(nil, error)
+                }
+                
                 return
             }
             let decoder = JSONDecoder()
@@ -60,12 +66,15 @@ class Client {
         let randomImageEndpoint = Client.Endpoint.randomImageFromAllDogsCollection.url
         let imageURLTask = URLSession.shared.dataTask(with: randomImageEndpoint) { (data, response, error) in
             guard let data = data else {
-                completionHandler(nil, error)
+                DispatchQueue.main.async {
+                    completionHandler(nil, error)
+                }
                 return
             }
             let decoder = JSONDecoder()
             let imageData = try! decoder.decode(DogResponse.self, from: data)
             completionHandler(imageData, nil)
+            
         }
         imageURLTask.resume()
     }
@@ -77,7 +86,7 @@ class Client {
             (data, response, error) in
             guard let data = data else {
             completionHandler([], error)
-            return
+                return
             }
         let decoder = JSONDecoder()
             let breedsListData = try! decoder.decode(BreedListResponse.self, from: data)
