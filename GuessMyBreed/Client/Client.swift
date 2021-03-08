@@ -85,7 +85,9 @@ class Client {
         let breedsListURLTask = URLSession.shared.dataTask(with: breedsListEndPoint) {
             (data, response, error) in
             guard let data = data else {
-            completionHandler([], error)
+                DispatchQueue.main.async {
+                    completionHandler([], error)
+                }
                 return
             }
         let decoder = JSONDecoder()

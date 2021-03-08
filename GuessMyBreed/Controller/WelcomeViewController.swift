@@ -31,9 +31,11 @@ class WelcomeViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         overrideUserInterfaceStyle = .light
         
+//        getBreedList()
+        Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
         Client.requestAnyRandomImage(completionHandler: handleRandomImageResponse(imageData:error:))
         
-        getBreedList()
+        
     }
     
     func handleImageFileResonse(image: UIImage?, error: Error?) {
@@ -58,7 +60,7 @@ class WelcomeViewController: UIViewController {
     func handleRandomImageResponse(imageData: DogResponse?, error: Error?) {
         guard let url = URL(string: imageData?.message ?? "") else {
             showLoadFailure(message: error?.localizedDescription ?? "")
-            print("cannot create URL")
+            Client.requestAnyRandomImage(completionHandler: handleRandomImageResponse(imageData:error:))
             return
         }
         Client.requestImageFile(url: url, completionHandler: self.handleImageFileResonse(image:error:))
@@ -70,13 +72,21 @@ class WelcomeViewController: UIViewController {
 
     func handleBreedsListResponse(breedsListData: [String]?, error: Error?) {
            if let breedsListData = breedsListData {
-            DispatchQueue.main.async {
-                let object = UIApplication.shared.delegate
-                let appDelegate = object as! AppDelegate
-                appDelegate.breeds = breedsListData
+            if (breedsListData.count>0){
+                DispatchQueue.main.async {
+                    print("Got the breed list")
+                    let object = UIApplication.shared.delegate
+                    let appDelegate = object as! AppDelegate
+                    appDelegate.breeds = breedsListData
+                }
+            } else {
+                Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
             }
+            
            } else {
+            print("cannot get the breed list")
                 showLoadFailure(message: error?.localizedDescription ?? "")
+                Client.requestBreedsList(completionHandler: handleBreedsListResponse(breedsListData:error:))
                 print("cannot get the breed list")
            }
            
